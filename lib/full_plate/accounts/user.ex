@@ -53,12 +53,10 @@ end
       Defaults to `true`.
   """
   def registration_changeset(user, attrs, opts \\ []) do
-    IO.inspect(attrs, label: :attrs)
     user
     |> cast(attrs, @fields)
     |> validate_email(opts)
     |> validate_password(opts)
-    |> validate_cpf(attrs)
   end
 
   defp validate_email(changeset, opts) do
@@ -79,8 +77,7 @@ end
     |> maybe_hash_password(opts)
   end
 
-  defp validate_cpf(changeset, attrs) do
-    IO.inspect(changeset, label: :changeset)
+  defp validate_cpf(changeset) do
     changeset
     |> validate_required([:cpf])
     |> Brcpfcnpj.Changeset.validate_cpf(:cpf)

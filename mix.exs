@@ -59,6 +59,7 @@ defmodule FullPlate.MixProject do
       {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.1.1"},
       {:bandit, "~> 1.2"},
+      {:decimal, "~> 2.0"},
       # Biblioteca para validação de CPF e CNPJ
       {:brcpfcnpj, "~> 0.1.0"},
       {:guardian, "~> 2.0"}

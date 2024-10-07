@@ -35,6 +35,16 @@ defmodule FullPlateWeb.Router do
 
   end
 
+  scope "/api/product", FullPlateWeb do
+    pipe_through [:api, :auth]
+
+    post "/register", ProductController, :create
+    get "/:type", ProductController, :get_product
+    put "/:id", ProductController, :update_product
+    delete "/:id", ProductController, :delete_product
+
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", FullPlateWeb do
   #   pipe_through :api

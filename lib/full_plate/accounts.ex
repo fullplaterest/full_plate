@@ -15,10 +15,10 @@ defmodule FullPlate.Accounts do
 
   ## Examples
 
-      iex> get_user_by_email("foo@example.com")
+      iex> get_user_by_email("CPF")
       %User{}
 
-      iex> get_user_by_email("unknown@example.com")
+      iex> get_user_by_email("unknow CPF")
       nil
 
   """
@@ -75,8 +75,8 @@ defmodule FullPlate.Accounts do
   """
   def get_user_by_email_and_password(email, password)
   when is_binary(email) and is_binary(password) do
-user = Repo.get_by(User, email: email)
-if User.valid_password?(user, password), do: user
+  user = Repo.get_by(User, email: email)
+  if User.valid_password?(user, password), do: user
 end
 
   @doc """
@@ -265,9 +265,7 @@ end
   insert a session token.
   """
   def insert_user_session_token(user_id, token) do
-    IO.inspect(user_id, label: :user)
     {_token, user_token} = UserToken.insert_session_token(user_id, token)
-    IO.inspect(user_token, label: :usertoken)
     Repo.insert!(user_token)
     :ok
   end
