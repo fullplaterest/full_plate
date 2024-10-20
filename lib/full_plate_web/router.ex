@@ -45,6 +45,14 @@ defmodule FullPlateWeb.Router do
 
   end
 
+  scope "/api/order", FullPlateWeb do
+    pipe_through [:api]
+
+    post "/", OrderController, :create
+    get "/", OrderController, :get_orders
+
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", FullPlateWeb do
   #   pipe_through :api

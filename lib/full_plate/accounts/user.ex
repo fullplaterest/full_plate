@@ -1,6 +1,7 @@
 defmodule FullPlate.Accounts.User do
   use Ecto.Schema
   import Ecto.Changeset
+  import CPF.Ecto.Type
 
   @type t :: %__MODULE__{
     id: Ecto.UUID.t(),
@@ -19,7 +20,7 @@ defmodule FullPlate.Accounts.User do
 schema "users" do
   field :first_name, :string
   field :last_name, :string
-  field :cpf, :string
+  field :cpf, cpf_type(:string)
   field :email, :string
   field :password, :string, virtual: true, redact: true
   field :hashed_password, :string
@@ -57,6 +58,7 @@ end
     |> cast(attrs, @fields)
     |> validate_email(opts)
     |> validate_password(opts)
+    |> unique_constraint(:cpf, name: "users_cpf_index")
   end
 
   defp validate_email(changeset, opts) do
@@ -75,12 +77,6 @@ end
     |> validate_format(:password, ~r/[A-Z]/, message: "at least one upper case character")
     |> validate_format(:password, ~r/[!?@#$%^&*_0-9]/, message: "at least one digit or punctuation character")
     |> maybe_hash_password(opts)
-  end
-
-  defp validate_cpf(changeset) do
-    changeset
-    |> validate_required([:cpf])
-    |> Brcpfcnpj.Changeset.validate_cpf(:cpf)
   end
 
   defp maybe_hash_password(changeset, opts) do

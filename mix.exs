@@ -62,6 +62,7 @@ defmodule FullPlate.MixProject do
       {:decimal, "~> 2.0"},
       # Biblioteca para validação de CPF e CNPJ
       {:brcpfcnpj, "~> 0.1.0"},
+      {:cpf, "~> 1.2"},
       {:guardian, "~> 2.0"}
     ]
   end

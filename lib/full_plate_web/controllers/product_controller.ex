@@ -35,7 +35,7 @@ defmodule FullPlateWeb.ProductController do
 
   def update_product(conn, params) do
     with %User{admin: true} <- user_id_identification(conn),
-      product <- ProductService.update_product(params["id"], params) do
+     {:ok, product} <- ProductService.update_product(params["id"], params) do
       conn
       |> put_status(:ok)
       |> render(:product, loyalt: false, product: product, status: :updated)
@@ -44,7 +44,7 @@ defmodule FullPlateWeb.ProductController do
 
   def delete_product(conn, params) do
     with %User{admin: true} <- user_id_identification(conn),
-      product <- ProductService.delete_product(params["id"]) do
+     {:ok, product} <- ProductService.delete_product(params["id"]) do
       conn
       |> put_status(:ok)
       |> render(:product, loyalt: false, product: product, status: :deleted)
