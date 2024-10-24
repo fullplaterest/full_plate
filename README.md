@@ -28,12 +28,13 @@ Aqui estão as instruções para configurar e rodar a aplicação localmente usa
    docker compose up or docker-compose up
 
 Para recuperar os ids dos produtos e usar na criacao dos pedidos segue a configuracao do banco para conexao
+```
 host: localhost
 database: postgres
 username: postgres
 password: postgres
 port: 5432
-
+```
 Isso iniciará a aplicação e ela estará disponível em http://localhost:4000
 
 
