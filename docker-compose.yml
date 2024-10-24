@@ -1,14 +1,25 @@
-version: '4.0'
-
+version: '2'
 services:
-  db:
+
+  app:
+    image: phoenix:latest
+    build: .
+    command: mix phx.server
+    volumes:
+      - .:/app
+    ports:
+      - "4000:4000"
+    depends_on:
+      - postgres
+
+  postgres:
     image: postgres:latest
     environment:
-      - POSTGRES_DATABASE=full_plate_dev
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: full_plate_dev
     volumes:
-      - ./postgres-data:/var/lib/postgresql/data
+      - /postgres-data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
-    command: postgres -c 'max_connections=200'
+

@@ -1,18 +1,36 @@
 # FullPlate
 
-To start your Phoenix server:
+Este projeto utiliza [Elixir](https://elixir-lang.org/) e [Phoenix Framework](https://www.phoenixframework.org/) para criar uma aplicação web referente ao projeto da pos graduacao FIAP ARQUITETURA DE SOFTWARE.
+Este projeto tem como objetivo criar uma aplicacao que resolve uma demanda de gerenciamento de pedido para um restaurante, organizando os pedidos em filas e facilitando a organizacao para o restaurante
 
-  * Run `mix setup` to install and setup dependencies
-  * Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
+Aqui estão as instruções para configurar e rodar a aplicação localmente usando Docker.
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+## Pré-requisitos
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+- [Docker](https://www.docker.com/get-started) instalado na sua máquina
+- [Docker Compose](https://docs.docker.com/compose/) (opcional, mas recomendado)
 
-## Learn more
+## Configuração do Ambiente
 
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+### Passos para iniciar o projeto:
+
+1. **Clone o repositório do projeto**
+
+   Se você ainda não clonou o repositório, faça isso com o comando:
+
+   ```bash
+   git clone https://github.com/igorsousap/full_plate.git
+   cd full_plate
+
+2. **Iniciando docker**
+
+   ```bash
+  docker compose up
+  or
+  docker-compose up
+
+Em caso de erro de permissao rodar o comando
+   ```bash
+  sudo chmod 777 -R .../full_plate/postgres-data
+  
+Isso iniciará a aplicação e ela estará disponível em http://localhost:4000

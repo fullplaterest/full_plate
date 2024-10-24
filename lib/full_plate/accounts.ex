@@ -15,6 +15,22 @@ defmodule FullPlate.Accounts do
 
   ## Examples
 
+      iex> get_user_by_email("CPF")
+      %User{}
+
+      iex> get_user_by_email("unknow CPF")
+      nil
+
+  """
+  def get_user_by_cpf(cpf) when is_binary(cpf) do
+    Repo.get_by(User, cpf: cpf)
+  end
+
+  @doc """
+  Gets a user by email.
+
+  ## Examples
+
       iex> get_user_by_email("foo@example.com")
       %User{}
 
@@ -24,6 +40,25 @@ defmodule FullPlate.Accounts do
   """
   def get_user_by_email(email) when is_binary(email) do
     Repo.get_by(User, email: email)
+  end
+
+
+  @doc """
+  Gets a user by email and password.
+
+  ## Examples
+
+      iex> get_user_by_email_and_password("foo@example.com", "correct_password")
+      %User{}
+
+      iex> get_user_by_email_and_password("foo@example.com", "invalid_password")
+      nil
+
+  """
+  def get_user_by_cpf_and_password(cpf, password)
+      when is_binary(cpf) and is_binary(password) do
+    user = Repo.get_by(User, cpf: cpf)
+    if User.valid_password?(user, password), do: user
   end
 
   @doc """
@@ -39,10 +74,10 @@ defmodule FullPlate.Accounts do
 
   """
   def get_user_by_email_and_password(email, password)
-      when is_binary(email) and is_binary(password) do
-    user = Repo.get_by(User, email: email)
-    if User.valid_password?(user, password), do: user
-  end
+  when is_binary(email) and is_binary(password) do
+  user = Repo.get_by(User, email: email)
+  if User.valid_password?(user, password), do: user
+end
 
   @doc """
   Gets a single user.
@@ -226,6 +261,15 @@ defmodule FullPlate.Accounts do
     token
   end
 
+   @doc """
+  insert a session token.
+  """
+  def insert_user_session_token(user_id, token) do
+    {_token, user_token} = UserToken.insert_session_token(user_id, token)
+    Repo.insert!(user_token)
+    :ok
+  end
+
   @doc """
   Gets the user with the given signed token.
   """
@@ -349,5 +393,23 @@ defmodule FullPlate.Accounts do
       {:ok, %{user: user}} -> {:ok, user}
       {:error, :user, changeset, _} -> {:error, changeset}
     end
+  end
+
+  @doc """
+  Validate if tokens is valid from a given tokne
+
+  ## Examples
+
+      iex> validate_token_user("valid_token")
+      nil
+
+      iex> validate_token_user("valid_token")
+     %User{}
+
+  """
+  def validate_token_user(token) do
+    {:ok, query} = UserToken.verify_session_token_query(token)
+
+    Repo.one(query)
   end
 end

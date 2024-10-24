@@ -17,10 +17,40 @@ defmodule FullPlateWeb.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :auth do
+    plug FullPlateWeb.AuthPipeline
+  end
+
   scope "/", FullPlateWeb do
     pipe_through :browser
 
     get "/", PageController, :home
+  end
+
+  scope "/api/users", FullPlateWeb do
+    pipe_through [:api]
+
+    post "/register", UserController, :create
+    post "/log_in", UserController, :log_in
+
+  end
+
+  scope "/api/product", FullPlateWeb do
+    pipe_through [:api, :auth]
+
+    post "/register", ProductController, :create
+    get "/:type", ProductController, :get_product
+    put "/:id", ProductController, :update_product
+    delete "/:id", ProductController, :delete_product
+
+  end
+
+  scope "/api/order", FullPlateWeb do
+    pipe_through [:api]
+
+    post "/", OrderController, :create
+    get "/", OrderController, :get_orders
+
   end
 
   # Other scopes may use custom stacks.
