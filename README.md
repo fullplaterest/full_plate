@@ -24,10 +24,8 @@ Aqui estão as instruções para configurar e rodar a aplicação localmente usa
 
 2. **Iniciando docker**
 
-   ```bash
-  docker compose up
-  or
-  docker-compose up
+    ```bash
+   docker compose up ordocker-compose up
 
 Em caso de erro de permissao rodar o comando
    ```bash
