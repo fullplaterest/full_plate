@@ -7,7 +7,7 @@ Aqui estão as instruções para configurar e rodar a aplicação localmente usa
 
 ## Pré-requisitos
 
-- [Docker](https://www.docker.com/get-started) instalado na sua máquina
+- [Docker](https://www.docker.com/get-started)
 - [Docker Compose](https://docs.docker.com/compose/)
 
 ## Configuração do Ambiente
