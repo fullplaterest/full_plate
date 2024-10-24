@@ -24,11 +24,11 @@ defmodule FullPlate.Service.ProductService do
     product_type = String.to_atom(product_type)
     case Products.get_by_type(product_type) do
       [] ->
-        Logger.info("products from type #{product_type} not found")
+        Logger.info("product from type #{product_type} not found")
         {:error, :not_found}
 
       product ->
-        Logger.info("products with id #{product_type} was requested")
+        Logger.info("product with id #{product_type} was requested")
         product
     end
   end
@@ -37,11 +37,11 @@ defmodule FullPlate.Service.ProductService do
   def update_product(product_id, attrs) do
     case Products.update_product(product_id, attrs) do
       nil ->
-        Logger.info("products from type #{product_id} not found")
+        Logger.info("product from type #{product_id} not found")
         {:error, :not_found}
 
       product ->
-        Logger.info("products with id #{product_id} was updated")
+        Logger.info("product with id #{product_id} was updated")
         product
     end
   end
@@ -50,11 +50,11 @@ defmodule FullPlate.Service.ProductService do
   def delete_product(product_id) do
     case Products.delete_product_by_id(product_id) do
       nil ->
-        Logger.info("products #{product_id} not found")
+        Logger.info("product #{product_id} not found")
         {:error, :not_found}
 
       product ->
-        Logger.info("products with id #{product_id} was deleted")
+        Logger.info("product with id #{product_id} was deleted")
         product
     end
   end
