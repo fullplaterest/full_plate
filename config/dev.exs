@@ -4,8 +4,8 @@ import Config
 config :full_plate, FullPlate.Repo,
   username: "postgres",
   password: "postgres",
-  hostname: "localhost",
-  database: "full_plate_dev",
+  hostname: "postgres",
+  database: "postgres",
   stacktrace: true,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10

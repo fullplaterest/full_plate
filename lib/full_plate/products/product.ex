@@ -28,7 +28,7 @@ defmodule FullPlate.Products.Product do
     field(:price, :decimal)
     field(:picture, :string)
 
-    has_one(:users, User)
+    belongs_to(:users, User)
 
     timestamps()
   end
