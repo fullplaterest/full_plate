@@ -34,6 +34,8 @@ database: postgres
 username: postgres
 password: postgres
 port: 5432
+
+select * from products
 ```
 Isso iniciará a aplicação e ela estará disponível em http://localhost:4000
 
