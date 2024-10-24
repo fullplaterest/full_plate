@@ -27,8 +27,10 @@ Aqui estão as instruções para configurar e rodar a aplicação localmente usa
     ```bash
    docker compose up or docker-compose up
 
+Isso iniciará a aplicação e ela estará disponível em http://localhost:4000
+
 Em caso de erro de permissao rodar o comando
+
    ```bash
   sudo chmod 777 -R .../full_plate/postgres-data
   
-Isso iniciará a aplicação e ela estará disponível em http://localhost:4000
