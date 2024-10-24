@@ -29,6 +29,13 @@ Aqui estão as instruções para configurar e rodar a aplicação localmente usa
 
 Isso iniciará a aplicação e ela estará disponível em http://localhost:4000
 
+Para recuperar os ids dos produtos e usar na criacao dos pedidos segue a configuracao do banco para conexao
+host: localhost
+database: postgres
+username: postgres
+password: postgres
+port: 5432
+
 Em caso de erro de permissao rodar o comando
 
    ```bash
