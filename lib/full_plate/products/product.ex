@@ -3,32 +3,29 @@ defmodule FullPlate.Products.Product do
 
   import Ecto.Changeset
 
-  alias FullPlate.Accounts.User
-
   @type type_types :: :lanche | :acompanhamento | :bebida | :sobremesa
   @type t :: %__MODULE__{
           id: Ecto.UUID.t(),
           product_name: String.t(),
-          id_user: Ecto.UUID.t(),
           description: Text.t(),
           type: type_types(),
           price: Decimal.t(),
-          picture: String.t()
+          picture: String.t(),
+          user_id: Ecto.UUID.t()
         }
 
-  @fields ~w(product_name description id_user type price picture)a
+  @fields ~w(product_name description user_id type price picture)a
   @type_types ~w(lanche acompanhamento bebida sobremesa)a
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
   schema "products" do
     field(:product_name, :string)
     field(:description, :string)
-    field(:id_user, :binary_id)
     field(:type, Ecto.Enum, values: @type_types)
     field(:price, :decimal)
     field(:picture, :string)
 
-    belongs_to(:users, User)
+    belongs_to :user, FullPlate.Accounts.User, type: :binary_id
 
     timestamps()
   end
@@ -38,7 +35,6 @@ defmodule FullPlate.Products.Product do
     product
     |> cast(attrs, @fields)
     |> validate_required(@fields)
-    |> foreign_key_constraint(:id_user, name: :products_id_store_fkey)
     |> validate_price()
   end
 

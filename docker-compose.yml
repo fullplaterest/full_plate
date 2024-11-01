@@ -6,10 +6,10 @@ services:
     build: .
     command: >
       /bin/sh -c "
-      mix deps.get &&
       mix ecto.create &&
       mix ecto.migrate &&
-      mix phx.server
+      mix deps.get &&
+      iex -S mix phx.server
       "
     volumes:
       - .:/app
