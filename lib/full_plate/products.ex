@@ -15,7 +15,7 @@ defmodule FullPlate.Products do
       "type" => "lanche",
       "price" => 11.59,
       "picture" => "www.picture.com",
-      "id_user" => "f16e5245-fef1-4f67-9e5e-86df9ccaf99a"
+      "user_id" => "f16e5245-fef1-4f67-9e5e-86df9ccaf99a"
       })
   """
   def register_product(attrs) do
