@@ -5,7 +5,7 @@ config :full_plate, FullPlate.Repo,
   username: "postgres",
   password: "postgres",
   hostname: "postgres",
-  database: "postgres",
+  database: "full_plate_dev",
   stacktrace: true,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10

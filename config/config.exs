@@ -68,3 +68,7 @@ import_config "#{config_env()}.exs"
 config :full_plate, FullPlateWeb.Guardian,
   issuer: "full_plate",
   secret_key: "mix guardian.gen.secret"
+
+config :tesla, adapter: Tesla.Adapter.Hackney
+
+config :full_plate, :mock_system, FullPlate.Payments.AdapterMock
