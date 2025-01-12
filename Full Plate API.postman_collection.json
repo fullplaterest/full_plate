@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"igor_test1404@gmail.com\",\n    \"password\": \"Igorsousa@123\",\n    \"cpf\": \"01589509332\",\n    \"first_name\": \"Igor\",\n    \"last_name\": \"Sousa\"\n}",
+							"raw": "{\n    \"email\": \"igor_test1404@gmail.com\",\n    \"password\": \"Igorsousa@123\",\n    \"cpf\": \"01589509331\",\n    \"first_name\": \"Igor\",\n    \"last_name\": \"Sousa\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -34,7 +34,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"igor_test140@gmail.com\",\n    \"password\": \"Igorsousa@123\",\n    \"cpf\": \"01589509332\",\n    \"first_name\": \"Igor\",\n    \"last_name\": \"Sousa\",\n    \"admin\": true\n}",
+							"raw": "{\n    \"email\": \"igor_test140@gmail.com\",\n    \"password\": \"Igorsousa@123\",\n    \"cpf\": \"48831054074\",\n    \"first_name\": \"Igor\",\n    \"last_name\": \"Sousa\",\n    \"admin\": true\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -52,7 +52,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"igor_test140@gmail.com\",\n    \"password\": \"Igorsousa@123\"\n}",
+							"raw": "{\n    \"email\": \"igor_test1404@gmail.com\",\n    \"password\": \"Igorsousa@123\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -74,7 +74,7 @@
 						"auth": {
 							"type": "bearer",
 							"bearer": {
-								"token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJmdWxsX3BsYXRlIiwiZXhwIjoxNzMwNzcwMTcyLCJpYXQiOjE3MjgzNTA5NzIsImlzcyI6ImZ1bGxfcGxhdGUiLCJqdGkiOiJiMGU2OTdlNy01ZDc2LTQxZTQtODVjNS1lM2RlMGQ0MWQ5NDAiLCJuYmYiOjE3MjgzNTA5NzEsInN1YiI6ImYwMjQzMDgzLTRlM2ItNGU3OC1hZGU1LTFmYzk4ZjA0YjVmYyIsInR5cCI6ImFjY2VzcyJ9.-qdgMHCf4NYDWuvyJecPuQC5ieP8novDjnrsFkemfA3P7wTzmUJX9zfvL0zwoq3XbmknRIdMOl0Np1loJIYqMQ"
+								"token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJmdWxsX3BsYXRlIiwiZXhwIjoxNzMyODM5MDM0LCJpYXQiOjE3MzA0MTk4MzQsImlzcyI6ImZ1bGxfcGxhdGUiLCJqdGkiOiJkNzIzNTM0NS04ZjdhLTRlNjQtODllNS03MTRjOWEyN2MxY2QiLCJuYmYiOjE3MzA0MTk4MzMsInN1YiI6ImI1NmY3YWQ5LTlkMTktNGFhMi1iMzIwLTNlYTQ0M2Q1NDg1NiIsInR5cCI6ImFjY2VzcyJ9.nA-A4IP3a3bmAyQE81Pi00dR-j0IcRDNh14jO7cp8s9e3v7NXxMkd_5XHtQgkX5ercFNeFDEnuMmtiOe4hf-Lh"
 							}
 						},
 						"method": "POST",
@@ -101,7 +101,7 @@
 						"auth": {
 							"type": "bearer",
 							"bearer": {
-								"token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJmdWxsX3BsYXRlIiwiZXhwIjoxNzMwNzQ0MzU5LCJpYXQiOjE3MjgzMjUxNTksImlzcyI6ImZ1bGxfcGxhdGUiLCJqdGkiOiJkY2Y0MGVmNi03YzhjLTRjM2YtODU3Ni1hZGMzMzY1ODdlNmUiLCJuYmYiOjE3MjgzMjUxNTgsInN1YiI6ImM0YWNmNDI1LTE4NjktNDAyMC1hMGY1LWM4Mzc3YjY2M2NjZiIsInR5cCI6ImFjY2VzcyJ9.MskANthpObZV-UD0QksZxITzjSMdn4VCqD2BBpy21zYRle4deBa2eeJfQ9_QSRA_nw1xCn1sKQAqyCmlEHh0pg"
+								"token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJmdWxsX3BsYXRlIiwiZXhwIjoxNzMyODM5MDM0LCJpYXQiOjE3MzA0MTk4MzQsImlzcyI6ImZ1bGxfcGxhdGUiLCJqdGkiOiJkNzIzNTM0NS04ZjdhLTRlNjQtODllNS03MTRjOWEyN2MxY2QiLCJuYmYiOjE3MzA0MTk4MzMsInN1YiI6ImI1NmY3YWQ5LTlkMTktNGFhMi1iMzIwLTNlYTQ0M2Q1NDg1NiIsInR5cCI6ImFjY2VzcyJ9.nA-A4IP3a3bmAyQE81Pi00dR-j0IcRDNh14jO7cp8s9e3v7NXxMkd_5XHtQgkX5ercFNeFDEnuMmtiOe4hf-Lg"
 							}
 						},
 						"method": "GET",
@@ -125,12 +125,12 @@
 						"auth": {
 							"type": "bearer",
 							"bearer": {
-								"token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJmdWxsX3BsYXRlIiwiZXhwIjoxNzMxMzUwMzE2LCJpYXQiOjE3Mjg5MzExMTYsImlzcyI6ImZ1bGxfcGxhdGUiLCJqdGkiOiJkNWE1ZjlmOC03Mjc0LTRjYmMtYTQwMC00YzJmNjQ4N2M0NTkiLCJuYmYiOjE3Mjg5MzExMTUsInN1YiI6ImYwMjQzMDgzLTRlM2ItNGU3OC1hZGU1LTFmYzk4ZjA0YjVmYyIsInR5cCI6ImFjY2VzcyJ9.6grlo68EbwATQ72SP2Q4Ml_2m0C-JlgdDvcAv2LNIqPpb_JAfSvcyvGUlSdi-0JqEq8ufguy4Y-MsWrWhHKf6A"
+								"token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJmdWxsX3BsYXRlIiwiZXhwIjoxNzMyODM5MDM0LCJpYXQiOjE3MzA0MTk4MzQsImlzcyI6ImZ1bGxfcGxhdGUiLCJqdGkiOiJkNzIzNTM0NS04ZjdhLTRlNjQtODllNS03MTRjOWEyN2MxY2QiLCJuYmYiOjE3MzA0MTk4MzMsInN1YiI6ImI1NmY3YWQ5LTlkMTktNGFhMi1iMzIwLTNlYTQ0M2Q1NDg1NiIsInR5cCI6ImFjY2VzcyJ9.nA-A4IP3a3bmAyQE81Pi00dR-j0IcRDNh14jO7cp8s9e3v7NXxMkd_5XHtQgkX5ercFNeFDEnuMmtiOe4hf-Lg"
 							}
 						},
 						"method": "DELETE",
 						"header": [],
-						"url": "localhost:4000/api/product/72889a15-ebdc-40ab-aaa1-c1210bee26b6"
+						"url": "localhost:4000/api/product/f47f36c5-0481-4587-8206-1f602c41cd57"
 					},
 					"response": []
 				},
@@ -188,7 +188,7 @@
 					"response": []
 				},
 				{
-					"name": "Get Products by Type",
+					"name": "Get order lists",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -232,6 +232,78 @@
 								}
 							]
 						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get order lists restaurante",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJmdWxsX3BsYXRlIiwiZXhwIjoxNzMwNzQ0MzU5LCJpYXQiOjE3MjgzMjUxNTksImlzcyI6ImZ1bGxfcGxhdGUiLCJqdGkiOiJkY2Y0MGVmNi03YzhjLTRjM2YtODU3Ni1hZGMzMzY1ODdlNmUiLCJuYmYiOjE3MjgzMjUxNTgsInN1YiI6ImM0YWNmNDI1LTE4NjktNDAyMC1hMGY1LWM4Mzc3YjY2M2NjZiIsInR5cCI6ImFjY2VzcyJ9.MskANthpObZV-UD0QksZxITzjSMdn4VCqD2BBpy21zYRle4deBa2eeJfQ9_QSRA_nw1xCn1sKQAqyCmlEHh0pg"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/api/order/?page=1&page_size=5",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"order",
+								""
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "page_size",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJmdWxsX3BsYXRlIiwiZXhwIjoxNzM2MzU5MTMxLCJpYXQiOjE3MzM5Mzk5MzEsImlzcyI6ImZ1bGxfcGxhdGUiLCJqdGkiOiIyMzg0NDA0Yi1jNTQ3LTQ3YjYtYmIyNy0yMDUyMzhjNjBmZDciLCJuYmYiOjE3MzM5Mzk5MzAsInN1YiI6Ijg3NGE2MWU3LTRhM2QtNGY3Ny1hNzY5LTEwMmIyYzc2NDdiNSIsInR5cCI6ImFjY2VzcyJ9.DYQAm-QxniFNu5m-kPUoco1jUQn8B7_vklp8jGFr5Xh8V7UP1moPaCFWbGyHQCGXIttMNkjDe8vFHKzzorgpdQ"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"order_status\": \"em_preparacao\",\n    \"is_finished?\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:4000/api/order/d72887d9-1607-417f-8113-cf218c8bc78a"
 					},
 					"response": []
 				}

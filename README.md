@@ -5,10 +5,23 @@ Este projeto tem como objetivo criar uma aplicacao que resolve uma demanda de ge
 
 Aqui estão as instruções para configurar e rodar a aplicação localmente usando Docker.
 
+## Links Relevantes
+
+**ATIVIDADE 01 -> Pos_tech Tech Challenge Fast Food**  
+**TIME:** ELIXIR  
+**NOME:** IGOR DE SOUSA PINTO  
+**DISCORD NAME:** igorspinto  
+
+- **SWAGGER:** [Documentação no SwaggerHub](https://app.swaggerhub.com/apis/IGORSOUSAPINTO140/full_plate/1.0.0)
+- **DRAWIO:** [Diagrama no Draw.io](https://drive.google.com/file/d/1E9i8Jp-_gwBR-zGy5yjTs3kpkzwACpIf/view?usp=drive_link)
+- **FIGMA:** [Evento no Figma](https://www.figma.com/board/97LXAMigMP3FbAa8Ytp4Tq/Event-Storming-FIAP?node-id=0-1&t=aeubb6RDalzolFHq-1)
+- **GITHUB:** [Repositório no GitHub](https://github.com/igorsousap/full_plate)
+
 ## Pré-requisitos
 
 - [Docker](https://www.docker.com/get-started)
 - [Docker Compose](https://docs.docker.com/compose/)
+- [Minikube](https://minikube.sigs.k8s.io/docs/start/?arch=%2Flinux%2Fx86-64%2Fstable%2Fbinary+download)
 
 ## Configuração do Ambiente
 
