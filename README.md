@@ -40,15 +40,19 @@ Aqui estão as instruções para configurar e rodar a aplicação localmente usa
     ```bash
    docker compose up or docker-compose up
 
-3. **Iniciando kubernats**
-
+3. **Iniciando kubernats/Minikube**
+   Execute o comendo na pasta do projeto
+   ```bash
+   ./setup_minikube.sh
+   ```
+   O arquivo executa todos esse passos: 
     ```bash
-   passo 01: start minikube -> kubectl config use-context minikube
+   passo 01: start minikube -> minikube start -> kubectl config use-context minikube
    passo 02: apontar docker localmente -> eval $(minikube docker-env) 
    -> simula load balancer no minukube -> minikube addons enable metallb
    -> metrics services -> minikube addons enable metrics-server
    passo 03: docker build -t full-plate:v1 .
-   passo 04: kubectl apply -f deployment.yaml
+   passo 04: kubectl apply -f postgres.yaml -> kubectl apply -f deployment.yaml
    passo 05: kubectl apply -f service.yaml
    passo 06: kubectl apply -f secret.yaml
    passo 07: kubectl apply -f configmap.yaml
@@ -57,7 +61,7 @@ Aqui estão as instruções para configurar e rodar a aplicação localmente usa
    kubectl get pods
    kubectl get svc
    kubectl get hpa
-   passo 10: endpoint minikube service full-plate-service --url
+   passo 10: endpoint -> minikube service full-plate-service --url
 
 Para recuperar os ids dos produtos e usar na criacao dos pedidos segue a configuracao do banco para conexao
 ```
