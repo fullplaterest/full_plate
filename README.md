@@ -12,8 +12,8 @@ Aqui estão as instruções para configurar e rodar a aplicação localmente usa
 **NOME:** IGOR DE SOUSA PINTO  
 **DISCORD NAME:** igorspinto  
 
-- **SWAGGER:** [Documentação no SwaggerHub](https://app.swaggerhub.com/apis/IGORSOUSAPINTO140/full_plate/1.0.0)
-- **DRAWIO:** [Diagrama no Draw.io](https://drive.google.com/file/d/1E9i8Jp-_gwBR-zGy5yjTs3kpkzwACpIf/view?usp=drive_link)
+- **SWAGGER:** [Documentação no SwaggerHub](https://app.swaggerhub.com/apis/IGORSOUSAPINTO140/full_plate/1.1.0)
+- **DRAWIO:** [Diagrama no Draw.io](https://drive.google.com/file/d/1PTwRraujiubrTaz0fvhr8EQSZFAM4knm/view?usp=sharing)
 - **FIGMA:** [Evento no Figma](https://www.figma.com/board/97LXAMigMP3FbAa8Ytp4Tq/Event-Storming-FIAP?node-id=0-1&t=aeubb6RDalzolFHq-1)
 - **GITHUB:** [Repositório no GitHub](https://github.com/igorsousap/full_plate)
 - **YOUTUBE** [Video Apresentacao](https://youtu.be/U_7vDRSulX8)
