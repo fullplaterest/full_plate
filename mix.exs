@@ -63,11 +63,7 @@ defmodule FullPlate.MixProject do
       # Biblioteca para validação de CPF e CNPJ
       {:brcpfcnpj, "~> 0.1.0"},
       {:cpf, "~> 1.2"},
-      {:guardian, "~> 2.0"},
-      # Adaptador http
-      {:tesla, "~> 1.7"},
-      {:hackney, "~> 1.18"},
-      {:mox, "~> 1.0", only: :test}
+      {:guardian, "~> 2.0"}
     ]
   end
 

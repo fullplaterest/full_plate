@@ -5,7 +5,12 @@ services:
     image: phoenix:latest
     build: .
     command: >
-      /bin/sh -c "mix ecto.create && mix ecto.migrate && mix deps.get && iex -S mix phx.server "
+      /bin/sh -c "
+      mix ecto.create &&
+      mix ecto.migrate &&
+      mix deps.get &&
+      iex -S mix phx.server
+      "
     volumes:
       - .:/app
     ports:
@@ -23,3 +28,4 @@ services:
       - /postgres-data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
+

@@ -5,6 +5,7 @@ defmodule FullPlate.Service.OrderService do
   alias FullPlate.Orders
 
   def create_order(order) do
+    IO.inspect(order)
    total = order["order"]
     |> calculate_total_price()
 
@@ -25,39 +26,17 @@ defmodule FullPlate.Service.OrderService do
     end
   end
 
-  def get_order(page, page_size, user_id) do
+  def get_order(page, page_size) do
     page = String.to_integer(page)
     page_size = String.to_integer(page_size)
-    case Orders.get_order(page, page_size, user_id) do
+    case Orders.get_order(page, page_size) do
       [] -> {:error, :not_found}
 
       orders ->
        Enum.map(orders, fn order ->
        products = Products.get_by_id_list(order.order)
-       %{total: order.total, products: products, payment_status: order.payment_status}
+       %{total: order.total, products: products}
       end)
-    end
-  end
-
-  def list_order(page, page_size) do
-    page = String.to_integer(page)
-    page_size = String.to_integer(page_size)
-    case Orders.list_orders(page, page_size) do
-      [] -> {:error, :not_found}
-
-      orders ->
-       Enum.map(orders, fn order ->
-       products = Products.get_by_id_list(order.order)
-       %{id: order.id, total: order.total, products: products, payment_status: order.payment_status, order_status: order.order_status}
-      end)
-    end
-  end
-
-  def update_order(params) do
-    case Orders.update_order(params) do
-      nil -> {:error, :not_found}
-
-      {:ok, order} -> order
     end
   end
 
@@ -69,4 +48,5 @@ defmodule FullPlate.Service.OrderService do
 
     Decimal.to_string(total)
   end
+
 end
