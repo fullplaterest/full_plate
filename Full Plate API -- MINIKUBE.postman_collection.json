@@ -1,0 +1,321 @@
+{
+	"info": {
+		"_postman_id": "86bfb5a7-8da4-4cf7-b753-b43abad6d44d",
+		"name": "Full Plate API -> MINIKUBE",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "13049431"
+	},
+	"item": [
+		{
+			"name": "User management",
+			"item": [
+				{
+					"name": "Create user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"igor_test1404@gmail.com\",\n    \"password\": \"Igorsousa@123\",\n    \"cpf\": \"01589509331\",\n    \"first_name\": \"Igor\",\n    \"last_name\": \"Sousa\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://192.168.49.2:31634/api/users/register"
+					},
+					"response": []
+				},
+				{
+					"name": "Create user admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"igor_test140@gmail.com\",\n    \"password\": \"Igorsousa@123\",\n    \"cpf\": \"48831054074\",\n    \"first_name\": \"Igor\",\n    \"last_name\": \"Sousa\",\n    \"admin\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://192.168.49.2:31634/api/users/register"
+					},
+					"response": []
+				},
+				{
+					"name": "Log In",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"igor_test140@gmail.com\",\n    \"password\": \"Igorsousa@123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://192.168.49.2:31634/api/users/log_in"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product management",
+			"item": [
+				{
+					"name": "Create Product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJmdWxsX3BsYXRlIiwiZXhwIjoxNzM5NjQyMzk1LCJpYXQiOjE3MzcyMjMxOTUsImlzcyI6ImZ1bGxfcGxhdGUiLCJqdGkiOiJmYmZiN2JkOS02OWNlLTQxYzgtOTlmNC1iYWQxMDcxYTQ5M2YiLCJuYmYiOjE3MzcyMjMxOTQsInN1YiI6IjVkNjNiOTQ1LTIwMmUtNDBjNi05MDg1LWNlZDFmNGQzNzYyNSIsInR5cCI6ImFjY2VzcyJ9.oh731UIQm8fBWIfxhNUnypt0GEIj3SDTE1cURCg_fxZJJnAHZqZCxPwVC6toWt6KGw8rZVtsCmlv4kdjZ97P7Q"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"product_name\": \"milkshake morango\",\n    \"description\": \"sorvete + leite + morango\",\n    \"type\": \"sobremesa\",\n    \"price\": \"11.50\",\n    \"picture\": \"www.picture_web.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://192.168.49.2:31634/api/product/register"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Products by Type",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJmdWxsX3BsYXRlIiwiZXhwIjoxNzM5NjQxNjcyLCJpYXQiOjE3MzcyMjI0NzIsImlzcyI6ImZ1bGxfcGxhdGUiLCJqdGkiOiIwMjM3YzFiMC0yMmEwLTRkZjEtODU5MS1kY2M0Zjc3YzQwY2IiLCJuYmYiOjE3MzcyMjI0NzEsInN1YiI6IjdjY2FiOThiLWU5MDYtNDUwNy1iMWRiLTUwMDY0MDkxOGMwNyIsInR5cCI6ImFjY2VzcyJ9.mtzQA8mp6W9zkdGeLCEYI_ROBL8y9yTDvr51HV86zMycIDgLO0l7z1CNL3mpfTkyYxU3E32Ay-0ghDambqFHyw"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://192.168.49.2:31634/api/product/sobremesa"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJmdWxsX3BsYXRlIiwiZXhwIjoxNzMyODM5MDM0LCJpYXQiOjE3MzA0MTk4MzQsImlzcyI6ImZ1bGxfcGxhdGUiLCJqdGkiOiJkNzIzNTM0NS04ZjdhLTRlNjQtODllNS03MTRjOWEyN2MxY2QiLCJuYmYiOjE3MzA0MTk4MzMsInN1YiI6ImI1NmY3YWQ5LTlkMTktNGFhMi1iMzIwLTNlYTQ0M2Q1NDg1NiIsInR5cCI6ImFjY2VzcyJ9.nA-A4IP3a3bmAyQE81Pi00dR-j0IcRDNh14jO7cp8s9e3v7NXxMkd_5XHtQgkX5ercFNeFDEnuMmtiOe4hf-Lg"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "http://192.168.49.2:31634/api/product/f47f36c5-0481-4587-8206-1f602c41cd57"
+					},
+					"response": []
+				},
+				{
+					"name": "Update product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJmdWxsX3BsYXRlIiwiZXhwIjoxNzMxMzUwMzE2LCJpYXQiOjE3Mjg5MzExMTYsImlzcyI6ImZ1bGxfcGxhdGUiLCJqdGkiOiJkNWE1ZjlmOC03Mjc0LTRjYmMtYTQwMC00YzJmNjQ4N2M0NTkiLCJuYmYiOjE3Mjg5MzExMTUsInN1YiI6ImYwMjQzMDgzLTRlM2ItNGU3OC1hZGU1LTFmYzk4ZjA0YjVmYyIsInR5cCI6ImFjY2VzcyJ9.6grlo68EbwATQ72SP2Q4Ml_2m0C-JlgdDvcAv2LNIqPpb_JAfSvcyvGUlSdi-0JqEq8ufguy4Y-MsWrWhHKf6A"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"product_name\": \"milkshake belga + especialB\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://192.168.49.2:31634/api/product/72889a15-ebdc-40ab-aaa1-c1210bee26b6"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order  management",
+			"item": [
+				{
+					"name": "Create Order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJmdWxsX3BsYXRlIiwiZXhwIjoxNzM5NjQyMzkxLCJpYXQiOjE3MzcyMjMxOTEsImlzcyI6ImZ1bGxfcGxhdGUiLCJqdGkiOiI5ZmJkYmNhZi1kOTk2LTRiMTktYWI0Ny01YWE3MmFmOThhNzUiLCJuYmYiOjE3MzcyMjMxOTAsInN1YiI6IjllNmRhZjkxLWRhMDItNDYyNi04NzZhLWU1ZGEwZTk1N2E1NiIsInR5cCI6ImFjY2VzcyJ9.qKyG_aGkyTQol4ooZvDgPDot43G6fTKrnYxm57ZWWc8bbPvqA8XeXQZBL1BU7slPAIR6jUGMei956rVSaQe6Fg"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"order\": [\"a0fc7bb0-0899-4ba3-ace9-30326c4debb6\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://192.168.49.2:31634/api/order"
+					},
+					"response": []
+				},
+				{
+					"name": "Get order lists",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJmdWxsX3BsYXRlIiwiZXhwIjoxNzM2MzU3NTQ5LCJpYXQiOjE3MzM5MzgzNDksImlzcyI6ImZ1bGxfcGxhdGUiLCJqdGkiOiI1ZDE2OGEyMC1iZjBlLTQyZWUtYTMzOS04YjIxZWVkMjE4ZjYiLCJuYmYiOjE3MzM5MzgzNDgsInN1YiI6IjVkOTllNDQ2LWVjMmEtNDExYS04MzNhLTRkNmUyOTU2ZTdjZCIsInR5cCI6ImFjY2VzcyJ9.lIMVt0psix8tfsALAxC42ZKbfAGu7B7Ct5YM2x2_ynJFSmTTBzh93GRFaS8iHz1CBFOasLIpzkO2MQww2jaqVw"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://192.168.49.2:31634/api/order/?page=1&page_size=5",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"49",
+								"2"
+							],
+							"port": "31634",
+							"path": [
+								"api",
+								"order",
+								""
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "page_size",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get order lists restaurante",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJmdWxsX3BsYXRlIiwiZXhwIjoxNzM2MzU5MTMxLCJpYXQiOjE3MzM5Mzk5MzEsImlzcyI6ImZ1bGxfcGxhdGUiLCJqdGkiOiIyMzg0NDA0Yi1jNTQ3LTQ3YjYtYmIyNy0yMDUyMzhjNjBmZDciLCJuYmYiOjE3MzM5Mzk5MzAsInN1YiI6Ijg3NGE2MWU3LTRhM2QtNGY3Ny1hNzY5LTEwMmIyYzc2NDdiNSIsInR5cCI6ImFjY2VzcyJ9.DYQAm-QxniFNu5m-kPUoco1jUQn8B7_vklp8jGFr5Xh8V7UP1moPaCFWbGyHQCGXIttMNkjDe8vFHKzzorgpdQ"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://192.168.49.2:31634/api/order/orders?page=1&page_size=5",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"49",
+								"2"
+							],
+							"port": "31634",
+							"path": [
+								"api",
+								"order",
+								"orders"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "page_size",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJmdWxsX3BsYXRlIiwiZXhwIjoxNzM2MzU5MTMxLCJpYXQiOjE3MzM5Mzk5MzEsImlzcyI6ImZ1bGxfcGxhdGUiLCJqdGkiOiIyMzg0NDA0Yi1jNTQ3LTQ3YjYtYmIyNy0yMDUyMzhjNjBmZDciLCJuYmYiOjE3MzM5Mzk5MzAsInN1YiI6Ijg3NGE2MWU3LTRhM2QtNGY3Ny1hNzY5LTEwMmIyYzc2NDdiNSIsInR5cCI6ImFjY2VzcyJ9.DYQAm-QxniFNu5m-kPUoco1jUQn8B7_vklp8jGFr5Xh8V7UP1moPaCFWbGyHQCGXIttMNkjDe8vFHKzzorgpdQ"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"order_status\": \"pronto\",\n    \"is_finished?\": \"true\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://192.168.49.2:31634/api/order/d72887d9-1607-417f-8113-cf218c8bc78a"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

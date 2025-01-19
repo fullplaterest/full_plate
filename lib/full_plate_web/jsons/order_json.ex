@@ -1,9 +1,10 @@
 defmodule FullPlateWeb.Jsons.OrderJson do
+
   def order(%{order: order, status: status}) do
-    %{status: status,
-    total_order: order.total,
-    link_for_payment: "localhost:4000/api/pagamento/#{order.id}"
-    }
+        %{status: status,
+        total_order: order.total,
+        link_for_payment: "http://192.168.49.2:31634/api/pagamento/#{order.id}"
+      }
   end
 
   def order_list(%{order: orders}) do

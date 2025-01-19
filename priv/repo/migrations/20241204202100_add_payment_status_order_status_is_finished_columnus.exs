@@ -10,7 +10,7 @@ defmodule FullPlate.Repo.Migrations.AddPaymentStatusOrderStatusIsFinishedColumnu
       add :order_status, :string
 
       add :user_id,
-          references(:users, on_delete: :nothing, column: :id, type: :binary_id,),
+          references(:users, on_delete: :nothing, column: :id, type: :binary_id),
           null: false
     end
   end

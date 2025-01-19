@@ -4,7 +4,7 @@ import Config
 config :full_plate, FullPlate.Repo,
   username: System.get_env("DB_USERNAME", "postgres"),
   password: System.get_env("DB_PASSWORD", "postgres"),
-  hostname: System.get_env("DB_HOSTNAME", "localhost"),
+  hostname: System.get_env("DB_HOSTNAME", "postgres"),
   database: System.get_env("DB_NAME", "full_plate_dev"),
   stacktrace: true,
   show_sensitive_data_on_connection_error: true,

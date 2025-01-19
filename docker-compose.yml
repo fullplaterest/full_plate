@@ -5,7 +5,7 @@ services:
     image: phoenix:latest
     build: .
     command: >
-      /bin/sh -c "mix ecto.create && mix ecto.migrate && mix deps.get && iex -S mix phx.server "
+      /bin/sh -c "mix ecto.create && mix ecto.migrate && mix deps.get && mix compile && iex -S mix phx.server "
     volumes:
       - .:/app
     ports:
