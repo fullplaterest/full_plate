@@ -10,10 +10,12 @@ defmodule FullPlate.Orders.Order do
     payment_status: Boolean.t(),
     is_finished?: Boolean.t(),
     order_status: order_status_types(),
-    user_id: Ecto.UUID.t()
+    user_id: Ecto.UUID.t(),
+    qr_code: String.t()
   }
 
-  @fields ~w(order total user_id order_status is_finished? payment_status)a
+  @fields ~w(order total user_id order_status is_finished? payment_status qr_code)a
+  @required_fields ~w(order total user_id order_status is_finished? payment_status)a
   @order_status_types ~w(recebido em_preparacao pronto)a
   @primary_key {:id, :binary_id, autogenerate: true}
   schema "orders" do
@@ -22,6 +24,7 @@ defmodule FullPlate.Orders.Order do
     field :payment_status, :boolean, default: false
     field :is_finished?, :boolean, default: false
     field :order_status, Ecto.Enum, values: @order_status_types, default: :recebido
+    field :qr_code, :string, default: nil
 
     belongs_to :user, FullPlate.Accounts.User, type: :binary_id
 
@@ -31,6 +34,6 @@ defmodule FullPlate.Orders.Order do
   def registration_changeset(order \\ %__MODULE__{}, attrs) do
     order
     |> cast(attrs, @fields)
-    |> validate_required(@fields)
+    |> validate_required(@required_fields)
   end
 end

@@ -3,7 +3,7 @@ defmodule FullPlateWeb.Jsons.OrderJson do
   def order(%{order: order, status: status}) do
         %{status: status,
         total_order: order.total,
-        link_for_payment: "http://192.168.49.2:31634/api/pagamento/#{order.id}"
+        link_for_payment: order.qr_code
       }
   end
 
@@ -11,7 +11,8 @@ defmodule FullPlateWeb.Jsons.OrderJson do
     Enum.map(orders, fn order -> %{
      products: order.products,
      total: Decimal.to_string(order.total),
-     payment_status: order.payment_status
+     payment_status: order.payment_status,
+     qr_code: order.qr_code
      } end)
    end
 

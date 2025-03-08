@@ -30,10 +30,10 @@ defmodule FullPlate.Orders do
     |> Repo.all()
   end
 
-  def update_order(params) do
+  def update_order(id, params) do
     Order
     |> from()
-    |> where([o], o.id == ^params["id"])
+    |> where([o], o.id == ^id)
     |> Repo.one()
     |> case do
       nil -> nil

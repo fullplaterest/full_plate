@@ -48,7 +48,7 @@ defmodule FullPlateWeb.OrderController do
     token = conn.private[:guardian_default_token]
     with {:ok, :authorized} <- UserService.validate_token(token),
      %User{admin: true} <- user_id_identification(conn),
-     order <- OrderService.update_order(params) do
+     order <- OrderService.update_order(params["id"], params) do
     conn
     |> put_status(:ok)
     |> render(:updated_order_list_admin, loyalt: false, order: order, status: :updated)

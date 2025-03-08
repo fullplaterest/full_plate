@@ -32,15 +32,15 @@ defmodule FullPlate.Service.UserService do
     end
   end
 
-  @spec get_user_email_password(String.t(), String.t()) :: {:ok, User.t()} | {:error, :not_found}
-  def get_user_email_password(email, password) do
-    case Accounts.get_user_by_email_and_password(email, password) do
+  @spec get_user_cpf_password(String.t(), String.t()) :: {:ok, User.t()} | {:error, :not_found}
+  def get_user_cpf_password(cpf, password) do
+    case Accounts.get_user_by_cpf_and_password(cpf, password) do
       nil ->
-        Logger.error("User with email: #{email} not found")
+        Logger.error("User with email: #{cpf} not found")
         {:error, :not_found}
 
       user ->
-        Logger.info("User with email: #{email} requested")
+        Logger.info("User with email: #{cpf} requested")
         {:ok, user}
     end
   end
@@ -56,14 +56,14 @@ defmodule FullPlate.Service.UserService do
 
   @spec authenticate_user(String.t(), String.t()) ::
           {:ok, User.t()} | {:error, :invalid_credentials}
-  def authenticate_user(email, password) do
-    case Accounts.get_user_by_email_and_password(email, password) do
+  def authenticate_user(cpf, password) do
+    case Accounts.get_user_by_cpf_and_password(cpf, password) do
       nil ->
-        Logger.error("User tried to authenticated and get denied with #{email}")
+        Logger.error("User tried to authenticated and get denied with #{cpf}")
         {:error, :invalid_credentials}
 
       user ->
-        Logger.info("User #{email} was been authenticated in #{DateTime.utc_now()}")
+        Logger.info("User #{cpf} was been authenticated in #{DateTime.utc_now()}")
         {:ok, user}
     end
   end

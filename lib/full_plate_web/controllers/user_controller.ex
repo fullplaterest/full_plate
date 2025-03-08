@@ -22,7 +22,7 @@ defmodule FullPlateWeb.UserController do
   end
 
   def log_in(conn, params) do
-    with {:ok, user} <- UserService.get_user_email_password(params["email"], params["password"]),
+    with {:ok, user} <- UserService.get_user_cpf_password(params["cpf"], params["password"]),
          :ok <- UserService.delete_previews_token(user.id),
          {:ok, token, _claims} <- Guardian.encode_and_sign(user),
          :ok <- UserService.insert_token_user(user.id, token) do

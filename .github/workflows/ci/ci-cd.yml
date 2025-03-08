@@ -1,0 +1,63 @@
+name: CI/CD Elixir + Docker
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build & Test
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:13
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: full_plate_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd="pg_isready -U postgres"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v3
+
+      - name: Instalar Elixir e Erlang
+        uses: erlef/setup-beam@v1
+        with:
+          otp-version: '24'
+          elixir-version: '1.14'
+
+      - name: Instalar Dependências
+        run: mix deps.get
+
+      - name: Compilar Projeto
+        run: mix compile --warnings-as-errors
+
+      - name: Rodar Testes
+        env:
+          MIX_ENV: test
+          DATABASE_URL: "ecto://postgres:postgres@localhost/full_plate_test"
+        run: mix test
+
+  docker:
+    name: Build & Push Docker
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v3
+
+      - name: Build da Imagem Docker
+        run: docker build -t myapp:latest .
