@@ -1,7 +1,7 @@
 defmodule FullPlate.Accounts.User do
   use Ecto.Schema
   import Ecto.Changeset
-  import CPF.Ecto.Type
+  import Brcpfcnpj.Changeset
 
   @type t :: %__MODULE__{
     id: Ecto.UUID.t(),
@@ -20,7 +20,7 @@ defmodule FullPlate.Accounts.User do
 schema "users" do
   field :first_name, :string
   field :last_name, :string
-  field :cpf, cpf_type(:string)
+  field :cpf, :string
   field :email, :string
   field :password, :string, virtual: true, redact: true
   field :hashed_password, :string
@@ -58,6 +58,8 @@ end
     |> cast(attrs, @fields)
     |> validate_email(opts)
     |> validate_password(opts)
+    |> normalize_cpf()
+    |> validate_cpf(:cpf)
     |> unique_constraint(:cpf, name: "users_cpf_index")
   end
 
@@ -78,6 +80,17 @@ end
     |> validate_format(:password, ~r/[!?@#$%^&*_0-9]/, message: "at least one digit or punctuation character")
     |> maybe_hash_password(opts)
   end
+
+  defp normalize_cpf(changeset) do
+    case get_change(changeset, :cpf) || get_field(changeset, :cpf) do
+      cpf when is_binary(cpf) ->
+        cleaned_cpf = String.replace(cpf, ~r/\D/, "")  # Remove caracteres não numéricos
+        put_change(changeset, :cpf, cleaned_cpf)
+      _ ->
+        changeset
+    end
+  end
+
 
   defp maybe_hash_password(changeset, opts) do
     hash_password? = Keyword.get(opts, :hash_password, true)

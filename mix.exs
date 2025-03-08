@@ -67,7 +67,7 @@ defmodule FullPlate.MixProject do
       # Adaptador http
       {:tesla, "~> 1.7"},
       {:hackney, "~> 1.18"},
-      {:mox, "~> 1.0", only: :test}
+      {:mox, "~> 1.0", only: :test},
     ]
   end
 
