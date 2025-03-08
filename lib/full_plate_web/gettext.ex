@@ -20,5 +20,5 @@ defmodule FullPlateWeb.Gettext do
 
   See the [Gettext Docs](https://hexdocs.pm/gettext) for detailed usage.
   """
-  use Gettext, otp_app: :full_plate
+  use Gettext, backend: FullPlate.Gettext
 end
