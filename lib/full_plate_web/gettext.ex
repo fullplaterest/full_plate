@@ -5,7 +5,7 @@ defmodule FullPlateWeb.Gettext do
   By using [Gettext](https://hexdocs.pm/gettext),
   your module gains a set of macros for translations, for example:
 
-      import FullPlateWeb.Gettext
+      use Gettext, backend: FullPlateWeb.Gettext
 
       # Simple translation
       gettext("Here is the string to translate")
@@ -20,5 +20,5 @@ defmodule FullPlateWeb.Gettext do
 
   See the [Gettext Docs](https://hexdocs.pm/gettext) for detailed usage.
   """
-  use Gettext, backend: FullPlate.Gettext
+  use Gettext.Backend, otp_app: :full_plate
 end

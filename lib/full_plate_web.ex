@@ -43,7 +43,7 @@ defmodule FullPlateWeb do
         layouts: [html: FullPlateWeb.Layouts]
 
       import Plug.Conn
-      import FullPlateWeb.Gettext
+      use Gettext, backend: FullPlateWeb.Gettext
 
       unquote(verified_routes())
     end
@@ -85,7 +85,7 @@ defmodule FullPlateWeb do
       import Phoenix.HTML
       # Core UI components and translation
       import FullPlateWeb.CoreComponents
-      import FullPlateWeb.Gettext
+      use Gettext, backend: FullPlateWeb.Gettext
 
       # Shortcut for generating JS commands
       alias Phoenix.LiveView.JS

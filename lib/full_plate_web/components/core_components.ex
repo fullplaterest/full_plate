@@ -17,7 +17,7 @@ defmodule FullPlateWeb.CoreComponents do
   use Phoenix.Component
 
   alias Phoenix.LiveView.JS
-  import FullPlateWeb.Gettext
+  use Gettext, backend: FullPlateWeb.Gettext
 
   @doc """
   Renders a modal.
