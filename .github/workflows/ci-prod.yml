@@ -1,0 +1,43 @@
+name: CI/CD - Deploy para AWS ECS
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  AWS_REGION: "us-east-1"
+  ECR_REGISTRY: "471112543448.dkr.ecr.us-east-1.amazonaws.com"
+  ECR_REPOSITORY: "full-plate"
+  IMAGE_TAG: "latest"
+  
+jobs:
+  build-and-push:
+    name: Build e Push para AWS ECR
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v3
+
+      - name: Configurar credenciais AWS
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Fazer login no Amazon ECR
+        id: login-ecr
+        run: |
+          aws ecr get-login-password --region $AWS_REGION | \
+          docker login --username AWS --password-stdin $ECR_REGISTRY
+
+      - name: Construir a imagem Docker
+        run: docker build -t $ECR_REPOSITORY:$IMAGE_TAG .
+
+      - name: Criar tag da imagem para ECR
+        run: docker tag $ECR_REPOSITORY:$IMAGE_TAG $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+
+      - name: Enviar a imagem para ECR
+        run: docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
