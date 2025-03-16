@@ -22,6 +22,7 @@ defmodule FullPlate.Service.ProductService do
   @spec get_product_by_type(String.t()) :: {:ok, Product.t()} | {:error, :not_found}
   def get_product_by_type(product_type) do
     product_type = String.to_atom(product_type)
+
     case Products.get_by_type(product_type) do
       [] ->
         Logger.info("product from type #{product_type} not found")

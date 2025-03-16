@@ -17,7 +17,8 @@ if config_env() == :prod do
     socket_options: maybe_ipv6
 
   secret_key_base =
-    System.get_env("SECRET_KEY_BASE") || "TtvK69c6zV0DNWeia63fpeIO7rjRrjPc7mOLLjXKPOVhqAiIby/+GKcvcaKC6g62"
+    System.get_env("SECRET_KEY_BASE") ||
+      "TtvK69c6zV0DNWeia63fpeIO7rjRrjPc7mOLLjXKPOVhqAiIby/+GKcvcaKC6g62"
 
   port = String.to_integer(System.get_env("PORT") || "4000")
 

@@ -4,7 +4,12 @@ defmodule FullPlate.MercadoPago.QrCode do
   @base_url "https://api.mercadopago.com/instore/orders/qr/seller/collectors"
   plug Tesla.Middleware.BaseUrl, @base_url
   plug Tesla.Middleware.JSON
-  plug Tesla.Middleware.Headers, [{"Authorization", "Bearer TEST-5376772499598573-020914-60d1b3ed6cbc95d44337385dfb4aeea3-173913148"}]
+
+  plug Tesla.Middleware.Headers, [
+    {"Authorization",
+     "Bearer TEST-5376772499598573-020914-60d1b3ed6cbc95d44337385dfb4aeea3-173913148"}
+  ]
+
   plug Tesla.Middleware.Logger
 
   def create_qr(payload, user_id \\ "173913148", external_pos_id \\ "PLATE001POS001") do

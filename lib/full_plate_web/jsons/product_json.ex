@@ -4,11 +4,13 @@ defmodule FullPlateWeb.Jsons.ProductJson do
   end
 
   def product_list(%{product: products}) do
-   Enum.map(products, fn product -> %{
-    id: product.id,
-    product_name: product.product_name,
-    description: product.description,
-    price: Decimal.to_string(product.price)
-    } end)
+    Enum.map(products, fn product ->
+      %{
+        id: product.id,
+        product_name: product.product_name,
+        description: product.description,
+        price: Decimal.to_string(product.price)
+      }
+    end)
   end
 end

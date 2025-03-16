@@ -42,7 +42,6 @@ defmodule FullPlate.Accounts do
     Repo.get_by(User, email: email)
   end
 
-
   @doc """
   Gets a user by email and password.
 
@@ -74,10 +73,10 @@ defmodule FullPlate.Accounts do
 
   """
   def get_user_by_email_and_password(email, password)
-  when is_binary(email) and is_binary(password) do
-  user = Repo.get_by(User, email: email)
-  if User.valid_password?(user, password), do: user
-end
+      when is_binary(email) and is_binary(password) do
+    user = Repo.get_by(User, email: email)
+    if User.valid_password?(user, password), do: user
+  end
 
   @doc """
   Gets a single user.
@@ -261,7 +260,7 @@ end
     token
   end
 
-   @doc """
+  @doc """
   insert a session token.
   """
   def insert_user_session_token(user_id, token) do

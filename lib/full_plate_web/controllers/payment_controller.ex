@@ -3,7 +3,6 @@ defmodule FullPlateWeb.PaymentController do
 
   alias FullPlate.Service.OrderService
 
-
   action_fallback(FullPlateWeb.FallbackController)
 
   plug :put_view, json: FullPlateWeb.Jsons.PaymentJson

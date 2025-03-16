@@ -14,11 +14,11 @@ defmodule FullPlate.Accounts.UserToken do
   @session_validity_in_days 1
 
   @type t :: %__MODULE__{
-    id: Ecto.UUID.t(),
-    token: String.t(),
-    context: String.t(),
-    sent_to: String.t()
-  }
+          id: Ecto.UUID.t(),
+          token: String.t(),
+          context: String.t(),
+          sent_to: String.t()
+        }
 
   schema "users_tokens" do
     field :token, :binary

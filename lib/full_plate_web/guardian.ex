@@ -1,7 +1,7 @@
 defmodule FullPlateWeb.Guardian do
   use Guardian, otp_app: :full_plate
 
- alias FullPlate.Service.UserService
+  alias FullPlate.Service.UserService
 
   def subject_for_token(%{id: id}, _claims) do
     sub = to_string(id)

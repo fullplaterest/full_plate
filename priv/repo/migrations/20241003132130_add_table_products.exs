@@ -22,7 +22,8 @@ defmodule FullPlate.Repo.Migrations.AddTableProducts do
   end
 
   defp create_type_types_enum do
-    query_create_type = "CREATE TYPE type AS ENUM ('lanche', 'acompanhamento', 'bebida', 'sobremesa')"
+    query_create_type =
+      "CREATE TYPE type AS ENUM ('lanche', 'acompanhamento', 'bebida', 'sobremesa')"
 
     query_create_type_rollback = "DROP TYPE type"
 
