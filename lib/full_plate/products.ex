@@ -44,11 +44,13 @@ defmodule FullPlate.Products do
   def update_product(id, attrs) do
     Repo.get(Product, id)
     |> case do
-      nil -> nil
+      nil ->
+        nil
 
-      product -> product
-      |> Product.changeset(attrs)
-      |> Repo.update()
+      product ->
+        product
+        |> Product.changeset(attrs)
+        |> Repo.update()
     end
   end
 

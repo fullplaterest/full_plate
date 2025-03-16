@@ -6,16 +6,14 @@ defmodule FullPlate.Service.OrderService do
   alias FullPlate.MercadoPago.QrCode
 
   def create_order(order) do
-   items = order["order"]
-    |> calculate_total_price() |> IO.inspect()
+    items = order["order"] |> calculate_total_price() |> IO.inspect()
 
-   final_order =
-    order
-    |> Map.put("total", items.total_amount)
+    final_order =
+      order
+      |> Map.put("total", items.total_amount)
 
     case Orders.create_order(final_order) do
       {:ok, order} ->
-
         order
         |> create_body_qr_code(items)
         |> IO.inspect()
@@ -32,6 +30,7 @@ defmodule FullPlate.Service.OrderService do
         Logger.error(
           "Could not create order with attributes #{inspect(order)}. Error: #{inspect(error)}"
         )
+
         error
     end
   end
@@ -39,68 +38,86 @@ defmodule FullPlate.Service.OrderService do
   def get_order(page, page_size, user_id) do
     page = String.to_integer(page)
     page_size = String.to_integer(page_size)
+
     case Orders.get_order(page, page_size, user_id) do
-      [] -> {:error, :not_found}
+      [] ->
+        {:error, :not_found}
 
       orders ->
-       Enum.map(orders, fn order ->
-       products = Products.get_by_id_list(order.order)
-       %{total: order.total, products: products, payment_status: order.payment_status}
-      end)
+        Enum.map(orders, fn order ->
+          products = Products.get_by_id_list(order.order)
+          %{total: order.total, products: products, payment_status: order.payment_status}
+        end)
     end
   end
 
   def list_order(page, page_size) do
     page = String.to_integer(page)
     page_size = String.to_integer(page_size)
+
     case Orders.list_orders(page, page_size) do
-      [] -> {:error, :not_found}
+      [] ->
+        {:error, :not_found}
 
       orders ->
-       Enum.map(orders, fn order ->
-       products = Products.get_by_id_list(order.order)
-       %{id: order.id, total: order.total, products: products, payment_status: order.payment_status, order_status: order.order_status}
-      end)
+        Enum.map(orders, fn order ->
+          products = Products.get_by_id_list(order.order)
+
+          %{
+            id: order.id,
+            total: order.total,
+            products: products,
+            payment_status: order.payment_status,
+            order_status: order.order_status
+          }
+        end)
     end
   end
 
   def update_order(id, params) do
     case Orders.update_order(id, params) do
       nil -> {:error, :not_found}
-
       {:ok, order} -> order
     end
   end
 
   def calculate_total_price(order) do
-    items = Enum.reduce(order, %{}, fn id, acc ->
-      product = Products.get_by_id(id)
+    items =
+      Enum.reduce(order, %{}, fn id, acc ->
+        product = Products.get_by_id(id)
 
-      acc
-      |> Map.update(product.product_name, %{
-           title: product.product_name,
-           description: product.description || "",
-           quantity: 1,
-           unit_price: ensure_float(product.price),
-           unit_measure: "Unit"
-         }, fn existing_item ->
-           %{
-             existing_item |
-             quantity: existing_item.quantity + 1
-           }
-         end)
-    end)
+        acc
+        |> Map.update(
+          product.product_name,
+          %{
+            title: product.product_name,
+            description: product.description || "",
+            quantity: 1,
+            unit_price: ensure_float(product.price),
+            unit_measure: "Unit"
+          },
+          fn existing_item ->
+            %{
+              existing_item
+              | quantity: existing_item.quantity + 1
+            }
+          end
+        )
+      end)
 
     # Atualizar o total_amount em cada item
-    updated_items = Map.values(items) |> Enum.map(fn item ->
-      total_amount = Float.round(item.quantity * item.unit_price, 2)
-      Map.put(item, :total_amount, total_amount)
-    end)
+    updated_items =
+      Map.values(items)
+      |> Enum.map(fn item ->
+        total_amount = Float.round(item.quantity * item.unit_price, 2)
+        Map.put(item, :total_amount, total_amount)
+      end)
 
     # Calcular o total geral
-    total = Enum.reduce(updated_items, 0.0, fn item, acc ->
-      acc + item.total_amount
-    end)
+    total =
+      Enum.reduce(updated_items, 0.0, fn item, acc ->
+        acc + item.total_amount
+      end)
 
     %{
       total_amount: Float.round(total, 2),
@@ -113,7 +130,6 @@ defmodule FullPlate.Service.OrderService do
   defp ensure_float(value) when is_binary(value), do: String.to_float(value)
   defp ensure_float(%Decimal{} = value), do: Decimal.to_float(value)
   defp ensure_float(_), do: 0.0
-
 
   defp create_body_qr_code(order, items) do
     total =

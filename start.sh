@@ -1,0 +1,1 @@
+/app/bin/full_plate eval "FullPlate.Release.migrate" && /app/bin/full_plate start

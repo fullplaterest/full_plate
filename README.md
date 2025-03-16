@@ -44,7 +44,7 @@ Aqui estão as instruções para configurar e rodar a aplicação localmente usa
 3. **Iniciando kubernats/Minikube**
    Execute o comendo na pasta do projeto
    ```bash
-   ./setup_minikube.sh
+   ./terraform-kubernetes/setup_minikube.sh
    ```
    O arquivo executa todos esse passos: 
     ```bash

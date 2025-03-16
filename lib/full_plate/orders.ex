@@ -24,7 +24,13 @@ defmodule FullPlate.Orders do
     Order
     |> from()
     |> where([o], not o.is_finished?)
-    |> order_by([o], [desc: fragment("CASE order_status WHEN 'pronto' THEN 1 WHEN 'em_preparacao' THEN 2 WHEN 'recebido' THEN 3 END"), desc: o.inserted_at])
+    |> order_by([o],
+      desc:
+        fragment(
+          "CASE order_status WHEN 'pronto' THEN 1 WHEN 'em_preparacao' THEN 2 WHEN 'recebido' THEN 3 END"
+        ),
+      desc: o.inserted_at
+    )
     |> limit(^page_size)
     |> offset((^page - 1) * ^page_size)
     |> Repo.all()
@@ -36,7 +42,8 @@ defmodule FullPlate.Orders do
     |> where([o], o.id == ^id)
     |> Repo.one()
     |> case do
-      nil -> nil
+      nil ->
+        nil
 
       order ->
         order

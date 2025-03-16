@@ -4,31 +4,31 @@ defmodule FullPlate.Accounts.User do
   import Brcpfcnpj.Changeset
 
   @type t :: %__MODULE__{
-    id: Ecto.UUID.t(),
-    first_name: String.t(),
-    last_name: String.t(),
-    cpf: String.t(),
-    email: String.t(),
-    password: String.t(),
-    hashed_password: String.t(),
-    confirmed_at: NaiveDateTime.t(),
-    admin: Boolean.t()
-  }
+          id: Ecto.UUID.t(),
+          first_name: String.t(),
+          last_name: String.t(),
+          cpf: String.t(),
+          email: String.t(),
+          password: String.t(),
+          hashed_password: String.t(),
+          confirmed_at: NaiveDateTime.t(),
+          admin: Boolean.t()
+        }
 
-@fields ~w(first_name last_name cpf email password confirmed_at admin)a
-@primary_key {:id, :binary_id, autogenerate: true}
-schema "users" do
-  field :first_name, :string
-  field :last_name, :string
-  field :cpf, :string
-  field :email, :string
-  field :password, :string, virtual: true, redact: true
-  field :hashed_password, :string
-  field :confirmed_at, :naive_datetime
-  field :admin, :boolean
+  @fields ~w(first_name last_name cpf email password confirmed_at admin)a
+  @primary_key {:id, :binary_id, autogenerate: true}
+  schema "users" do
+    field :first_name, :string
+    field :last_name, :string
+    field :cpf, :string
+    field :email, :string
+    field :password, :string, virtual: true, redact: true
+    field :hashed_password, :string
+    field :confirmed_at, :naive_datetime
+    field :admin, :boolean
 
-  timestamps(type: :utc_datetime)
-end
+    timestamps(type: :utc_datetime)
+  end
 
   @doc """
   A user changeset for registration.
@@ -77,20 +77,23 @@ end
     |> validate_length(:password, min: 12, max: 72)
     |> validate_format(:password, ~r/[a-z]/, message: "at least one lower case character")
     |> validate_format(:password, ~r/[A-Z]/, message: "at least one upper case character")
-    |> validate_format(:password, ~r/[!?@#$%^&*_0-9]/, message: "at least one digit or punctuation character")
+    |> validate_format(:password, ~r/[!?@#$%^&*_0-9]/,
+      message: "at least one digit or punctuation character"
+    )
     |> maybe_hash_password(opts)
   end
 
   defp normalize_cpf(changeset) do
     case get_change(changeset, :cpf) || get_field(changeset, :cpf) do
       cpf when is_binary(cpf) ->
-        cleaned_cpf = String.replace(cpf, ~r/\D/, "")  # Remove caracteres não numéricos
+        # Remove caracteres não numéricos
+        cleaned_cpf = String.replace(cpf, ~r/\D/, "")
         put_change(changeset, :cpf, cleaned_cpf)
+
       _ ->
         changeset
     end
   end
-
 
   defp maybe_hash_password(changeset, opts) do
     hash_password? = Keyword.get(opts, :hash_password, true)

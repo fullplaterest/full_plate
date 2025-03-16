@@ -56,9 +56,13 @@ defmodule FullPlate.AccountsTest do
       {:error, changeset} = Accounts.register_user(%{email: "not valid", password: "not valid"})
 
       assert %{
-        email: ["must have the @ sign and no spaces"],
-        password: ["at least one digit or punctuation character", "at least one upper case character", "should be at least 12 character(s)"]
-      } = errors_on(changeset)
+               email: ["must have the @ sign and no spaces"],
+               password: [
+                 "at least one digit or punctuation character",
+                 "at least one upper case character",
+                 "should be at least 12 character(s)"
+               ]
+             } = errors_on(changeset)
     end
 
     test "validates maximum values for email and password for security" do
@@ -301,9 +305,13 @@ defmodule FullPlate.AccountsTest do
         })
 
       assert %{
-        password: ["at least one digit or punctuation character", "at least one upper case character", "should be at least 12 character(s)"],
-        password_confirmation: ["does not match password"]
-      } = errors_on(changeset)
+               password: [
+                 "at least one digit or punctuation character",
+                 "at least one upper case character",
+                 "should be at least 12 character(s)"
+               ],
+               password_confirmation: ["does not match password"]
+             } = errors_on(changeset)
     end
 
     test "validates maximum values for password for security", %{user: user} do
@@ -313,7 +321,9 @@ defmodule FullPlate.AccountsTest do
     end
 
     test "updates the password", %{user: user} do
-      {:ok, updated_user} = Accounts.reset_user_password(user, %{password: "Newvalidpassword123@"})
+      {:ok, updated_user} =
+        Accounts.reset_user_password(user, %{password: "Newvalidpassword123@"})
+
       assert is_nil(updated_user.password)
       assert Accounts.get_user_by_email_and_password(user.email, "Newvalidpassword123@")
     end

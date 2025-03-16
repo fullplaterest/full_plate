@@ -9,7 +9,13 @@ defmodule FullPlate.MixProject do
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+      releases: [
+        full_plate: [
+          include_executables_for: [:unix],
+          applications: [runtime_tools: :permanent]
+        ]
+      ]
     ]
   end
 
@@ -67,7 +73,7 @@ defmodule FullPlate.MixProject do
       # Adaptador http
       {:tesla, "~> 1.7"},
       {:hackney, "~> 1.18"},
-      {:mox, "~> 1.0", only: :test},
+      {:mox, "~> 1.0", only: :test}
     ]
   end
 

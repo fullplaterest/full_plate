@@ -20,7 +20,10 @@ config :full_plate, FullPlateWeb.Endpoint,
     layout: false
   ],
   pubsub_server: FullPlate.PubSub,
-  live_view: [signing_salt: "P1UeW/z8"]
+  live_view: [signing_salt: "P1UeW/z8"],
+  secret_key_base:
+    System.get_env("SECRET_KEY_BASE") ||
+      "TtvK69c6zV0DNWeia63fpeIO7rjRrjPc7mOLLjXKPOVhqAiIby/+GKcvcaKC6g62"
 
 # Configures the mailer
 #

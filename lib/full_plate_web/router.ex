@@ -32,7 +32,6 @@ defmodule FullPlateWeb.Router do
 
     post "/register", UserController, :create
     post "/log_in", UserController, :log_in
-
   end
 
   scope "/api/product", FullPlateWeb do
@@ -42,7 +41,6 @@ defmodule FullPlateWeb.Router do
     get "/:type", ProductController, :get_product
     put "/:id", ProductController, :update_product
     delete "/:id", ProductController, :delete_product
-
   end
 
   scope "/api/order", FullPlateWeb do
@@ -58,6 +56,7 @@ defmodule FullPlateWeb.Router do
     pipe_through [:api]
 
     get "/pagamento/:id", PaymentController, :payments
+    get "/health", HealthController, :index
   end
 
   # Other scopes may use custom stacks.

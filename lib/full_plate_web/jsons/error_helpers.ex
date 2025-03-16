@@ -1,5 +1,5 @@
 defmodule FullPlateWeb.Jsons.ErrorHelpers do
-   @moduledoc """
+  @moduledoc """
   Conveniences for translating and building error messages.
   """
 
