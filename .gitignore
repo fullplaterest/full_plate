@@ -38,3 +38,8 @@ npm-debug.log
 
 /postgres-data
 logs.txt
+
+terraform-aws/.terraform
+terraform-aws/.terraform.lock.hcl
+terraform-aws/terraform.tfstate
+terraform-aws/terraform.tfstate.backup
