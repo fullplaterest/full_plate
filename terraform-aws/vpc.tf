@@ -57,6 +57,10 @@ resource "aws_route_table_association" "subnet2_route" {
 resource "aws_db_subnet_group" "rds_subnet_group" {
   name       = "rds-subnet-group"
   subnet_ids = [aws_subnet.subnet.id, aws_subnet.subnet2.id]
+
+  lifecycle {
+    ignore_changes = [name]
+  }
 }
 
 # 5. Create a security group along with ingress and egress rules obs. not the best pratice
@@ -292,6 +296,44 @@ resource "aws_lb_listener" "ecs_alb_listener_4000" {
     type             = "forward"
     target_group_arn = aws_lb_target_group.ecs_tg_4000.arn
   }
+}
+
+# 13. Creates api gateway
+resource "aws_api_gateway_rest_api" "auth_api" {
+  name        = "auth-api"
+  description = "API Gateway para autenticação"
+}
+
+# 14 . creates the router
+resource "aws_api_gateway_resource" "auth" {
+  rest_api_id = aws_api_gateway_rest_api.auth_api.id
+  parent_id   = aws_api_gateway_rest_api.auth_api.root_resource_id
+  path_part   = "auth"
+}
+
+resource "aws_api_gateway_resource" "login" {
+  rest_api_id = aws_api_gateway_rest_api.auth_api.id
+  parent_id   = aws_api_gateway_resource.auth.id
+  path_part   = "login"
+}
+
+# 15. creates the method
+resource "aws_api_gateway_method" "auth_login_post" {
+  rest_api_id   = aws_api_gateway_rest_api.auth_api.id
+  resource_id   = aws_api_gateway_resource.login.id
+  http_method   = "POST"
+  authorization = "NONE"
+}
+
+# 16. conects in the api 
+resource "aws_api_gateway_integration" "auth_login_integration" {
+  rest_api_id = aws_api_gateway_rest_api.auth_api.id
+  resource_id = aws_api_gateway_resource.login.id
+  http_method = aws_api_gateway_method.auth_login_post.http_method
+
+  type                    = "HTTP_PROXY"
+  integration_http_method = "POST"
+  uri                     = "http://${aws_lb.ecs_alb.dns_name}/api/user/log_in"
 }
 
 output "rds_endpoint" {
