@@ -16,7 +16,7 @@ config :full_plate, FullPlateWeb.Endpoint,
   check_origin: false,
   code_reloader: true,
   debug_errors: true,
-  secret_key_base: System.get_env("SECRET_KEY_BASE", "fallback_secret_key"),
+  secret_key_base: System.get_env("SECRET_KEY_BASE", "fallback_secret_key") || "TtvK69c6zV0DNWeia63fpeIO7rjRrjPc7mOLLjXKPOVhqAiIby/+GKcvcaKC6g62",
   watchers: [
     esbuild: {Esbuild, :install_and_run, [:full_plate, ~w(--sourcemap=inline --watch)]},
     tailwind: {Tailwind, :install_and_run, [:full_plate, ~w(--watch)]}

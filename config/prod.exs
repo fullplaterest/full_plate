@@ -19,3 +19,10 @@ config :logger, level: :info
 
 # Runtime production configuration, including reading
 # of environment variables, is done on config/runtime.exs.
+
+config :full_plate, FullPlateWeb.Endpoint,
+  http: [port: 4000],
+  transport_options: [socket_opts: [:inet6]],
+  server: true
+
+config :logger, level: :info

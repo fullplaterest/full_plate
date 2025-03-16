@@ -9,8 +9,14 @@ defmodule FullPlate.MixProject do
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+      releases: [
+        full_plate: [
+          include_executables_for: [:unix],
+          applications: [runtime_tools: :permanent]
+        ]
     ]
+  ]
   end
 
   # Configuration for the OTP application.
